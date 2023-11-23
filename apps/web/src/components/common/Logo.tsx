@@ -5,10 +5,10 @@ interface LogoProps {}
 
 const Logo: FC<LogoProps> = () => {
   return (
-    <div className="flex flex-row items-center border border-primary gap-x-2 ">
+    <div className="flex flex-row items-center gap-x-2 ">
       <div
         className={cn(
-          `flex items-center justify-center w-12 h-12 bg-primary rounded-md`
+          `flex items-center justify-center w-10 h-10 bg-primary rounded-md`
         )}
       >
         <p className="text-lg font-bold text-white">SA</p>
