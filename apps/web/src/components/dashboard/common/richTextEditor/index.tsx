@@ -5,7 +5,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import Underline from "@tiptap/extension-underline";
 import Youtube from "@tiptap/extension-youtube";
 import TiptapImage from "@tiptap/extension-image";
-import { EditorContent, getMarkRange, useEditor } from "@tiptap/react";
+import { EditorContent, getMarkRange, useEditor, Range } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React, { FC, useEffect, useState } from "react";
 import EditorToolbar from "./toolbar";
@@ -22,7 +22,7 @@ const lowlight = createLowlight(all);
 lowlight.register({ ...common, ...all });
 
 const RichTextEditor: FC<RichTextEditorProps> = () => {
-  const [selectionRange, setSelectionRange] = useState<>();
+  const [selectionRange, setSelectionRange] = useState<Range | undefined>();
 
   const editor = useEditor({
     extensions: [
@@ -66,6 +66,7 @@ const RichTextEditor: FC<RichTextEditorProps> = () => {
     editorProps: {
       handleClick(view, pos, event) {
         const state = view.state;
+
         const selectionRange = getMarkRange(
           state.doc.resolve(pos),
           state.schema.marks.link
@@ -78,7 +79,7 @@ const RichTextEditor: FC<RichTextEditorProps> = () => {
 
       attributes: {
         class:
-          "prose dark:prose-invert prose-sm max-w-prose focus:outline-none focus:border-none w-full py-4 mx-auto ",
+          "prose dark:prose-invert prose-sm max-w-prose focus:outline-none focus:border-none w-full py-4 mx-auto px-4 xl:px-0",
       },
     },
   });

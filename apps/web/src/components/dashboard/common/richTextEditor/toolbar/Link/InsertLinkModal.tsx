@@ -14,7 +14,7 @@ import {
   DialogTrigger,
   Label,
 } from "ui";
-import { LinkIcon } from "lucide-react";
+
 import InputWithLabel from "../../../InputWithLabel";
 
 export type LinkData = {
@@ -32,7 +32,7 @@ interface InsertLinkModalProps {
 
 const defaultState = {
   href: "",
-  openInNewTab: false,
+  openInNewTab: true,
   rel: "noopener noreferrer nofollow",
 };
 
@@ -43,8 +43,6 @@ const InsertLinkModal: FC<InsertLinkModalProps> = ({
   children,
 }) => {
   const [link, setLink] = useState<LinkData>(defaultState);
-
-  console.log("Inital state: ", initialState);
 
   const handleSubmitLink = () => {
     handleSubmit(link);

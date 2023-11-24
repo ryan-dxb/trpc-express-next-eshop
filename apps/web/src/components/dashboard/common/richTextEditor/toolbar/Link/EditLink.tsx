@@ -8,6 +8,7 @@ import { LiaEdit } from "react-icons/lia";
 import { IconType } from "react-icons";
 import { Button } from "ui";
 import InsertLinkModal, { LinkData } from "./InsertLinkModal";
+import { validateUrl } from "@/lib/editorUtils";
 
 interface EditLinkProps {
   editor: Editor;
@@ -31,36 +32,41 @@ const EditLink: FC<EditLinkProps> = ({ editor }) => {
   }, [editor]);
 
   const handleLinkSubmit = ({ href, openInNewTab, rel }: LinkData) => {
-    console.log(href);
-
     if (openInNewTab) {
       editor.commands.setLink({
-        href: href,
+        href: validateUrl(href),
         target: "_blank",
         rel: rel ?? "noopener noreferrer nofollow",
       });
     } else {
       editor.commands.setLink({
-        href: href,
+        href: validateUrl(href),
         target: "_self",
         rel: rel ?? "noopener noreferrer nofollow",
       });
     }
   };
 
-  const handleUnlink = () => {
+  const handleUnlink = (e: any) => {
+    e.preventDefault();
     editor.commands.unsetLink();
   };
 
   const openLink = useCallback(() => {
     const { href } = editor.getAttributes("link");
+
     window.open(href, "_blank");
   }, [editor]);
 
   return (
     <BubbleMenu
-      className="absolute flex items-center justify-center h-8 px-2 translate-x-1/2 border shadow-sm -top-7 right-1/2 bg-primary/5"
+      className="absolute flex items-center justify-center h-8 px-2 border shadow-sm bg-background"
       editor={editor}
+      shouldShow={({ editor }) => editor.isActive("link")}
+      tippyOptions={{
+        placement: "bottom",
+        appendTo: "parent",
+      }}
     >
       <div className="flex items-center justify-center space-x-2">
         <BubbleButton icon={BsBoxArrowInUpRight} action={openLink} />
@@ -70,7 +76,12 @@ const EditLink: FC<EditLinkProps> = ({ editor }) => {
           initialState={getInitialState()}
           handleSubmit={handleLinkSubmit}
         >
-          <BubbleButton icon={LiaEdit} />
+          <Button
+            variant="ghost"
+            className="w-6 h-6 p-0 rounded hover:bg-primary hover:text-accent-foreground"
+          >
+            <LiaEdit className="w-4 h-4" />
+          </Button>
         </InsertLinkModal>
         <BubbleButton icon={BiUnlink} action={handleUnlink} />
       </div>
@@ -80,7 +91,7 @@ const EditLink: FC<EditLinkProps> = ({ editor }) => {
 
 type BubbleButtonProps = {
   icon: IconType;
-  action?: () => void;
+  action?: (e: any) => void;
 };
 
 const BubbleButton: FC<BubbleButtonProps> = ({ icon: Icon, action }) => {
@@ -89,6 +100,7 @@ const BubbleButton: FC<BubbleButtonProps> = ({ icon: Icon, action }) => {
       onClick={action}
       variant="ghost"
       className="w-6 h-6 p-0 rounded hover:bg-primary hover:text-accent-foreground"
+      type="button"
     >
       {<Icon className="w-4 h-4" />}
     </Button>
