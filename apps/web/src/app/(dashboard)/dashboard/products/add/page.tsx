@@ -3,13 +3,15 @@ import PageContentLayout from "@/components/dashboard/common/PageContentLayout";
 import PageHeader from "@/components/dashboard/common/PageHeader";
 import RichTextEditor from "@/components/dashboard/common/richTextEditor";
 import { NextPage } from "next";
-import { Input, Label } from "ui";
+import Image from "next/image";
+import { Button, Input, Label } from "ui";
+import ImageUpload from "@/components/dashboard/common/ImageUpload";
 
 interface AddNewProductPageProps {}
 
 const AddNewProductPage: NextPage<AddNewProductPageProps> = () => {
   return (
-    <>
+    <div className="flex flex-col h-full">
       <PageHeader
         title="Add New Product"
         subTitle="Add new product to your store"
@@ -59,6 +61,13 @@ const AddNewProductPage: NextPage<AddNewProductPageProps> = () => {
                 </div>
 
                 {/* Product Images */}
+                <div>
+                  <Label className="text-xs font-medium uppercase text-muted-foreground">
+                    Product Images
+                  </Label>
+
+                  <ImageUpload />
+                </div>
               </form>
             </div>
           </div>
@@ -70,7 +79,7 @@ const AddNewProductPage: NextPage<AddNewProductPageProps> = () => {
           </div>
         </div>
       </PageContentLayout>
-    </>
+    </div>
   );
 };
 

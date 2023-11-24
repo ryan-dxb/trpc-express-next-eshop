@@ -12,13 +12,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     <div className="flex h-screen overflow-hidden bg-background">
       <DashboardSidebar />
 
-      <div className="flex flex-col flex-1">
-        <DashboardHeader />
+      <DashboardHeader />
 
-        <main className="flex flex-col flex-1 overflow-hidden">{children}</main>
+      <main className="flex flex-col flex-1 py-14">{children}</main>
 
-        <DashboardFooter />
-      </div>
+      <DashboardFooter />
     </div>
   );
 };

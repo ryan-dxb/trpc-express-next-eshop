@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { ScrollArea } from "ui";
 import { cn } from "ui/lib/utils";
 
 interface PageContentLayoutProps {
@@ -11,7 +12,9 @@ const PageContentLayout: FC<PageContentLayoutProps> = ({
   className,
 }) => {
   return (
-    <div className={cn("max-w-7xl w-full mx-auto px-4 my-4 ")}>{children}</div>
+    <ScrollArea className="w-full pl-4 pr-4 mx-auto my-4 max-w-7xl 2xl:pl-0">
+      {children}
+    </ScrollArea>
   );
 };
 

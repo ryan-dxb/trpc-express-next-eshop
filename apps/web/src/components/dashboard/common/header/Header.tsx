@@ -6,7 +6,7 @@ interface DashboardHeaderProps {}
 
 const DashboardHeader: FC<DashboardHeaderProps> = () => {
   return (
-    <div className="flex h-14 border-b-[.5px] items-center px-6 justify-between">
+    <div className="fixed flex h-14 border-b-[.5px] items-center px-6 justify-between w-full">
       {/* Search Bar */}
 
       <div className="flex h-10 border w-80">
