@@ -13,7 +13,9 @@ const Logo: FC<LogoProps> = () => {
       >
         <p className="text-lg font-bold text-white">SA</p>
       </div>
-      <p className="pr-2 text-2xl font-semibold text-primary">Smart Admin</p>
+      <p className="pr-2 text-2xl font-semibold tracking-tighter uppercase text-primary">
+        Smart Admin
+      </p>
     </div>
   );
 };

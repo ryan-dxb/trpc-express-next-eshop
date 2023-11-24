@@ -1,6 +1,7 @@
 import InputWithLabel from "@/components/dashboard/common/InputWithLabel";
 import PageContentLayout from "@/components/dashboard/common/PageContentLayout";
 import PageHeader from "@/components/dashboard/common/PageHeader";
+import RichTextEditor from "@/components/dashboard/common/richTextEditor";
 import { NextPage } from "next";
 import { Input, Label } from "ui";
 
@@ -46,6 +47,16 @@ const AddNewProductPage: NextPage<AddNewProductPageProps> = () => {
                 />
 
                 {/* Text Editor for Long Description */}
+
+                <div>
+                  <Label
+                    htmlFor="longDescription"
+                    className="text-xs font-medium uppercase text-muted-foreground"
+                  >
+                    Product Description
+                  </Label>
+                  <RichTextEditor />
+                </div>
 
                 {/* Product Images */}
               </form>
