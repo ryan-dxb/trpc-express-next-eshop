@@ -167,7 +167,8 @@ const AddNewProductPage: NextPage<AddNewProductPageProps> = () => {
                       <Input
                         id="stock-quantity"
                         type="number"
-                        placeholder="Enter stock quantity"
+                        min={0}
+                        placeholder="Qty"
                         className="w-20 focus-visible:ring-offset-0 active:ring-offset-0 focus:ring-offset-0"
                       />
                     </div>
