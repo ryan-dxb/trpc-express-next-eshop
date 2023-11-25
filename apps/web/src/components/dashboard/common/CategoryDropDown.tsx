@@ -93,16 +93,13 @@ const categoriesData = [
 const CategoryDropDown: FC<CategoryDropDownProps> = () => {
   return (
     <div>
-      <Label className="text-xs font-medium text-gray-600 uppercase">
+      <Label className="text-xs font-medium uppercase text-muted-foreground">
         Category
       </Label>
 
       <Select>
-        <SelectTrigger className="w-full rounded">
-          <SelectValue
-            placeholder="Select a category"
-            className="placeholder:text-muted-foreground text-muted-foreground"
-          />
+        <SelectTrigger className="w-full focus-visible:ring-offset-0 placeholder:text-muted-foreground focus:ring-offset-0 active:ring-offset-0">
+          <SelectValue placeholder="Select a category" />
         </SelectTrigger>
         <SelectContent className="overflow-y-auto h-60">
           <ScrollArea className="h-60">

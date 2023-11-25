@@ -1,5 +1,8 @@
 {
     "name": "@trpc-app/configs",
     "version": "0.0.0",
-    "private": true
-  }
+    "private": true,
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.10"
+    }
+}

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Button, Checkbox, Input, Label, Separator, Switch } from "ui";
 import ImageUpload from "@/components/dashboard/common/ImageUpload";
 import CategoryDropDown from "@/components/dashboard/common/CategoryDropDown";
+import TagInput from "@/components/dashboard/common/TagInput";
 
 interface AddNewProductPageProps {}
 
@@ -118,9 +119,9 @@ const AddNewProductPage: NextPage<AddNewProductPageProps> = () => {
                 <h3 className="text-lg font-semibold">Product Organization</h3>
 
                 <div className="mt-6">
-                  <div className="flex flex-col space-y-4">
+                  <div className="flex flex-col space-y-6">
                     <CategoryDropDown />
-                    {/* <TagDropDown /> */}
+                    <TagInput />
                   </div>
                 </div>
               </div>
